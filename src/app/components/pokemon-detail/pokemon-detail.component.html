@@ -15,7 +15,7 @@
   <img
     mat-card-image
     class="detail-image"
-    src="{{ pokeDetail?.['sprites']['other']['dream_world']['front_default'] }}"
+    src="{{ pokeDetail?.['sprites']['other']['dream_world']['front_default'] ? pokeDetail?.['sprites']['other']['dream_world']['front_default'] : pokeDetail?.['sprites']['other']['home']['front_default']  }}"
     alt="{{ pokeDetail?.name.toUpperCase() }}"
   />
   <mat-card-content>
