@@ -1,0 +1,24 @@
+.pokemon-card {
+  margin: 10px;
+  background: #acb6e5;
+  background: -webkit-linear-gradient(to right, #86fde8, #acb6e5);
+  background: linear-gradient(to right, #86fde8, #acb6e5);
+}
+.pokemon-card:hover {
+  transform: scale(1.05);
+}
+.filter-wrap {
+  margin: 15px;
+}
+.search-fields {
+  width: 100%;
+}
+
+.card-wrap {
+  cursor: pointer;
+}
+
+.mat-progress-spinner {
+  left: 45%;
+  margin: 8% 0;
+}

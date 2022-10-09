@@ -1,0 +1,67 @@
+<button
+  id="get-home"
+  mat-icon-button
+  color="primary"
+  aria-label="Example icon button with a home icon"
+  (click)="getToHome()"
+>
+  <mat-icon>arrow_backward_ios</mat-icon>
+</button>
+<mat-card class="detail-card">
+  <mat-card-header>
+    <mat-card-title>{{ pokeDetail?.name.toUpperCase() }}</mat-card-title>
+    <mat-card-subtitle>No. {{ pokeDetail?.id }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    class="detail-image"
+    src="{{ pokeDetail?.['sprites']['other']['dream_world']['front_default'] }}"
+    alt="{{ pokeDetail?.name.toUpperCase() }}"
+  />
+  <mat-card-content>
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip color="primary" selected
+        >Name: {{ pokeDetail?.name }}
+      </mat-chip>
+      <mat-chip color="primary" selected
+        >Order: {{ pokeDetail?.order }}</mat-chip
+      >
+      <mat-chip color="primary" selected
+        >Height: {{ pokeDetail?.height }}
+      </mat-chip>
+      <mat-chip color="primary" selected
+        >Weight: {{ pokeDetail?.weight }}</mat-chip
+      >
+
+      <mat-chip color="primary" selected
+        >Types:
+        <span *ngFor="let types of pokeDetail?.types; let iLast = last">
+          {{ types?.type?.name }}{{ iLast ? "" : ", " }}
+        </span></mat-chip
+      >
+
+      <mat-chip color="primary" selected
+        >Exp: {{ pokeDetail?.base_experience }}</mat-chip
+      >
+    </mat-chip-list>
+    <hr />
+    <div>
+      <span class="mat-colore-bold">Abilities:</span>
+      <span *ngFor="let abilities of pokeDetail?.abilities; let iLast = last">
+        {{ abilities?.ability?.name }}{{ iLast ? "" : ", " }}
+      </span>
+    </div>
+    <div>
+      <span class="mat-colore-bold">Strategy:</span>
+      <span *ngFor="let stats of pokeDetail?.stats; let iLast = last">
+        {{ stats?.stat?.name }}{{ iLast ? "" : ", " }}
+      </span>
+    </div>
+    <div>
+      <span class="mat-colore-bold">Moves:</span>
+      <span *ngFor="let moves of pokeDetail?.moves; let iLast = last">
+        {{ moves?.move?.name }}{{ iLast ? "" : ", " }}
+      </span>
+    </div>
+  </mat-card-content>
+</mat-card>

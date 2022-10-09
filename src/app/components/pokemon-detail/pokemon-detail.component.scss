@@ -1,0 +1,17 @@
+@import "../../../assets/styles/variables.scss";
+
+.detail-card {
+  max-width: 35%;
+  margin: 20px auto;
+  background: #cac531;
+  background: -webkit-linear-gradient(to right, #f3f9a7, #cac531);
+  background: linear-gradient(to right, #f3f9a7, #cac531);
+}
+
+.mat-card-image {
+  height: 250px;
+}
+
+.mat-colore-bold {
+  font-weight: bold;
+}
