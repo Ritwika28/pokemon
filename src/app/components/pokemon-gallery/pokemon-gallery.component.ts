@@ -1,4 +1,10 @@
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { PokemonService } from 'src/app/services/pokemon.service';
 import { Observable } from 'rxjs';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -23,7 +29,7 @@ export interface OptionModel {
   templateUrl: './pokemon-gallery.component.html',
   styleUrls: ['./pokemon-gallery.component.scss'],
 })
-export class PokemonGalleryComponent implements OnInit {
+export class PokemonGalleryComponent implements OnInit, OnDestroy {
   cardsData: any[] = [];
   pokemonData: any = [];
   options: OptionModel[] = [
