@@ -182,7 +182,7 @@ export class PokemonGalleryComponent implements OnInit, OnDestroy {
         this.dataSource = new MatTableDataSource<any>(this.cardsData);
         this.obs = this.dataSource.connect();
         this.dataSource.paginator = this.paginator;
-        //this.loader = false;
+        this.loader = false;
         localStorage.setItem('cardData', JSON.stringify(this.cardsData));
       },
       (error) => {
