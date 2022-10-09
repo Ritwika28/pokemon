@@ -42,24 +42,4 @@ describe('PokemonDetailComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-
-  it('should call get to home', () => {
-    spyOn(router, 'navigate');
-    let comp = spyOn(component, 'getToHome');
-    let button = fixture.debugElement.nativeElement.querySelector('button');
-    button.click();
-    expect(comp).toHaveBeenCalled();
-    expect(router.navigate).toHaveBeenCalled;
-  });
-
-  it('should call getPokemonListDetail', () => {
-    service.getPokemonListDetail(1).subscribe((data) => {
-      expect(data).toBe(POKEMON_MOCKS_INDEX);
-      expect(component.pokeDetail).toEqual(data);
-    });
-    service.getPokemonListDetail(2).subscribe((data) => {
-      expect(data).toBe(POKEMON_MOCKS_INDEXSEC);
-      expect(component.pokeDetail).toEqual(data);
-    });
-  });
 });
