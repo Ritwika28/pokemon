@@ -1,7 +1,7 @@
 # PokemonApp
 
 This project was generated with [Angular CLI] version 12.2.10.
-Angular Material and flex-layout framework has been used for UI component and responsive grid. For formatting Prettier configuration has been used in vscode setting.json for lint maintenance on save and paste for typescript.
+Angular Material and flex-layout framework has been used for UI component and responsive grid. For formatting Prettier configuration has been used in vscode setting.json for lint maintenance on save and paste for typescript and eslint is used for the linting of the files
 
 ## To Run the Pokemon Application
 

@@ -151,4 +151,49 @@ describe('PokemonGalleryComponent', () => {
     expect(matOptions[2].innerText.trim()).toEqual('Weight');
     matOptions[0].click();
   });
+
+  it('should call getPokemonDetails', () => {
+    service
+      .getPokemonDetails([
+        'https://pokeapi.co/api/v2/pokemon/1/',
+        'https://pokeapi.co/api/v2/pokemon/2/',
+      ])
+      .subscribe((data) => {
+        expect(data).toBe([POKEMON_MOCKS_INDEX, POKEMON_MOCKS_INDEXSEC]);
+        expect(component.pokemonData).toEqual({
+          id: POKEMON_MOCKS_INDEX?.id,
+          name: POKEMON_MOCKS_INDEX?.name,
+          height: POKEMON_MOCKS_INDEX?.height,
+          weight: POKEMON_MOCKS_INDEX?.weight,
+          image:
+            POKEMON_MOCKS_INDEX?.['sprites']['other']['official-artwork'][
+              'front_default'
+            ],
+          abilities: POKEMON_MOCKS_INDEX?.abilities,
+        });
+        expect(component.cardsData).toEqual(component.pokemonData);
+        expect(component.dataSource.data).toEqual(component.cardsData);
+        component.dataSource = new MatTableDataSource<any>(component.cardsData);
+        expect(component.obs).toBe(component.dataSource.connect());
+        expect(component.dataSource.paginator).toBe(component.paginator);
+        window.localStorage.setItem(
+          'cardData',
+          JSON.stringify(component.cardsData)
+        );
+        expect(component.loader).toEqual(false);
+      });
+  });
+
+  it('should filter the dataSource', () => {
+    component.dataSource = new MatTableDataSource<any>(component.cardsData);
+    fixture.detectChanges();
+    const np = spyOn(component, 'newPrdiction');
+    component.cardsData = POKEMON_MOCKS_INDEX;
+    component.abilitiesFilter.setValue('overgrow');
+    expect(component.filteredValues['abilities']).toEqual(
+      component.abilitiesFilter.value
+    );
+    expect(np).toHaveBeenCalled();
+    expect(component.dataSource.filter).toEqual('');
+  });
 });
